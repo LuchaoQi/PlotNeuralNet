@@ -20,26 +20,46 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % conv1_1,conv1_2,%pool1
 \pic[shift={(0,0,0)}] at (0,0,0) {RightBandedBox={name=cr1,%
-        xlabel={{"64","64"}},zlabel=I,fill=\ConvColor,bandfill=\ConvReluColor,%
-        height=40,width={2,2},depth=40}};
+        xlabel={{"1","1"}},zlabel=1440,fill=\ConvColor,bandfill=\ConvReluColor,%
+        height=40,width={1},depth=144, caption = Conv1D}};
 \pic[shift={(\poolsep,0,0)}] at (cr1-east) {Box={name=p1,%
-        fill=\PoolColor,opacity=0.5,height=30,width=1,depth=30}};
+        fill=\PoolColor,opacity=0.5,height=30,width=1,depth=30, caption = MaxPooling1D}};
 % conv2_1,conv2_2,pool2
 \pic[shift={(1,0,0)}] at (p1-east) {RightBandedBox={name=cr2,%
-        xlabel={{"64","64"}},zlabel=I/2,fill=\ConvColor,bandfill=\ConvReluColor,%
-        height=30,width={3,3},depth=30}};
+        xlabel={{"10","10"}},zlabel=719,fill=\ConvColor,bandfill=\ConvReluColor,%
+        height=30,width={10},depth=71, caption = Conv1D}};
 \pic[shift={(\poolsep,0,0)}] at (cr2-east) {Box={name=p2,%
-        fill=\PoolColor,opacity=0.5,height=23,width=1,depth=23}};
-% conv3_1,conv3_2,pool3
+        fill=\PoolColor,opacity=0.5,height=23,width=1,depth=23, caption = MaxPooling1D}};
+% faltten
 \pic[shift={(1,0,0)}] at (p2-east) {RightBandedBox={name=cr3,%
-        xlabel={{"256","256","256"}},zlabel=I/4,fill=\ConvColor,bandfill=\ConvReluColor,%
-        height=23,width={4,4,4},depth=23}};
+        xlabel={{"1"}},zlabel=6,fill=\ConvColor,bandfill=\ConvReluColor,%
+        height=1,width={1},depth=43, caption = Fully Connected Layer}};
+
+
+\pic[shift={(1.5,0,0)}] at (cr3-east) {Ball={name=elt2,%
+        fill=\SumColor,opacity=0.6,%
+        radius=2.5,logo=$+$}};
+
+
+
+
+
+
+
+% conv3_1,conv3_2,pool3
+%\pic[shift={(1,0,0)}] at (p2-east) {RightBandedBox={name=cr3,%
+%        xlabel={{"256","256","256"}},zlabel=I/4,fill=\ConvColor,bandfill=\ConvReluColor,%
+%        height=23,width={4,4,4},depth=23}};
 \pic[shift={(\poolsep,0,0)}] at (cr3-east) {Box={name=p3,%
-        fill=\PoolColor,opacity=0.5,height=14,width=1,depth=14}};
+        fill=\PoolColor,opacity=0.5,height=14,width=1,depth=14, caption = MaxPooling1D}};
 % conv4_1,conv4_2,conv4_3,pool4
 \pic[shift={(1,0,0)}] at (p3-east) {RightBandedBox={name=cr4,%
         xlabel={{"512","512","512"}},zlabel=I/8,fill=\ConvColor,bandfill=\ConvReluColor,%
         height=14,width={7,7,7},depth=14}};
+
+
+
+
 \pic[shift={(\poolsep,0,0)}] at (cr4-east) {Box={name=p4,%
         fill=\PoolColor,opacity=0.5,height=8,width=1,depth=8}};
 % conv5_1,conv5_2,conv5_3,pool5
